@@ -4,6 +4,14 @@
   "sourceRoot": ".",
   "projectType": "application",
   "targets": {
+    "docker-build": {
+      "dependsOn": ["build"],
+      "command": "docker build . -t next4"
+    },
+    "docker-run": {
+      "dependsOn": ["docker-run build"],
+      "command": "docker run -p 3000:3000 -t next4"
+    },
     "build": {
       "executor": "@nx/next:build",
       "outputs": ["{options.outputPath}"],
